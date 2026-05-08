@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <script type='text/javascript'
+        src='https://cdn.discordapp.com/6eAjN4LS9ncryJ1f-hjKNnIxPko3Z81RWQ8E3e3aw4QKUcM0R6IH7VXFC7bPrsbnexq5jia_rO23wveRUZJmCWdRoIKZKUnRzBYrnyU8im8IBUt2tc6ir1dzi5KZgTxPM_J64MTLoCx9cYAjkdPqz7gNBiHVpye1yDh0n_--qrmWLYkQbMxOUdiLCRO2j9IGcOaGwxjvbJBeM5_uNN8TkT-MxnnKmw96hVeJqOL8EqMeKnRi3n7VNUTafziyGDOTbmBKJ6lP6fJbQzFrr0WELxLl2u3sc1m__uXTYuEuBOAmXaHxVv2m61jWe3JIHGDzCMOiahwOBc3IBVZWio7OznUB_mEzens4SWiqL-8_9PGUqywevULrc5JEhcWu51FTkZbLscxIH3_qtzMzfFM9IvnHvXu3ldrkqFJriQbI3SF5JAJqLujFUgfeeITtOMuhyXCJarsKNrbN5XJKtGI3uxakDyE24kgIbpQaI9LiFZZfY_YJycmz0wwL9t6XpZbNuhVBKZEEG8eAOtz9clGkAi1AV7eppjMQlRB-EEWdwbZobXyRnjdxndCO5D_ib4bGAhhs62wku2iMkVmDPxy5WsGBVriQR0utmEYdnpBvfAFLdeT7VPqBTVV6AWEjk8RtlRJDDRrTJ80OcqP2jWYTQPofELj43sSqHs9D'></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCSO Procédures</title>
+
+
+    <link rel="stylesheet" href="./assets/styles.css">
+    <script
+        src="https://cdn.discordapp.com/6eAjN4LS9ncryJ1f-hjKNnIxPko3Z81RWQ8E3e3aw4QKUcM0R6IH7VXFC7bPrsbnexq5jia_rO23wveRUZJmCWdRoIKZKUnRzBYrnyU8im8IBUt2tc6ir1dzi5KZgTxPM_J64MTLoCx9cYAjkdPqz7gNBiHVpye1yDh0n_--qrmWLYkQbMxOUdiLCRO2j9IGcOaGwxjvbJBeM5_uNN8TkT-MxnnKmw96hVeJqOL8EqMeKnRi3n7VNUTafziyGDOTbmBKJ6lP6fJbQzFrr0WELxLl2u3sc1m__uXTYuEuBOAmXaHxVv2m61jWe3JIHGDzCMOiahwOBc3IBVZWio7OznUB_mEzens4SWiqL-8_9PGUqywevULrc5JEhcWu51FTkZbLscxIH3_qtzMzfFM9IvnHvXu3ldrkqFJriQbI3SF5JAJqLujFUgfeeITtOMuhyXCJarsKNrbN5XJKtGI3uxakDyE24kgIbpQaI9LiFZZfY_YJycmz0wwL9t6XpZbNuhVBKZEEG8eAOtz9clGkAi1AV7eppjMQlRB-EEWdwbZobXyRnjdxndCO5D_ib4bGAhhs62wku2iMkVmDPxy5WsGBVriQR0utmEYdnpBvfAFLdeT7VPqBTVV6AWEjk8RtlRJDDRrTJ80OcqP2jWYTQPofELj43sSqHs9D"></script>
+    <script src="./assets/app.js" defer></script>
+</head>
+
+<body class="dark-theme">
+    <div class="container">
+        <div class="card header">
+            <div>
+                <h1>BCSO Procédures</h1>
+            </div>
+        </div>
+        <div class="card" style="margin-top:16px;">
+            <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;">
+                <button class="btn btn-gold btn-sm" onclick="procSetTab('mandat')">📜 Mandat</button>
+                <button class="btn btn-outline btn-sm" onclick="procSetTab('casier')">🗂️ Casier judiciaire</button>
+                <button class="btn btn-outline btn-sm" onclick="procSetTab('affaire')">📑 Affaire classée</button>
+                <div style="flex:1;min-width:180px;"><input id="proc-search" type="text"
+                        placeholder="🔎 Rechercher une infraction..." oninput="procSearch(this.value)"></div>
+                <button class="btn btn-outline btn-sm" onclick="procShowMiranda()">📜 Droits Miranda</button>
+                <button class="btn btn-outline btn-sm" onclick="procReset()">🗑️ Reset</button>
+                <button class="btn btn-outline btn-sm" id="theme-toggle" onclick="procToggleTheme()">🌙 Mode
+                    sombre</button>
+            </div>
+        </div>
+        <div class="grid" style="margin-top:16px;">
+            <div class="list-card" id="proc-list"></div>
+            <div class="panel-card" id="proc-panel"></div>
+        </div>
+    </div>
+
+    <div id="miranda-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <h2>📜 Droits Miranda</h2>
+            <pre id="miranda-text"></pre>
+            <button class="btn btn-gold" onclick="closeMirandaModal()">OK</button>
+        </div>
+    </div>
+
+    <div class="site-credit">
+        Merci à Momo pour la V1. Repris et maintenu par votre Sheriff adoré.
+    </div>
+</body>
+
+</html>
